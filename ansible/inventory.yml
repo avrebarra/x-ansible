@@ -1,0 +1,15 @@
+all:
+  children:
+    clusters:
+      hosts:
+        host1:
+          ansible_host: vhost1
+          ansible_port: 22
+          ansible_ssh_user: test
+          ansible_sudo_pass: test
+
+        host2:
+          ansible_host: vhost2
+          ansible_port: 22
+          ansible_ssh_user: test
+          ansible_sudo_pass: test
