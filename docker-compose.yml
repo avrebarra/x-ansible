@@ -1,0 +1,28 @@
+
+version: '3'
+
+services:
+  vhost1:
+    image: ansible-vhost
+    ports:
+      - "2222:22"
+    networks:
+      - default
+
+  vhost2:
+    image: ansible-vhost
+    ports:
+      - "2223:22"
+    networks:
+      - default
+
+  ansible:
+    image: willhallonline/ansible:2.9-alpine
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./ansible:/ansible
+      - ~/.ssh/id_rsa:/root/id_rsa
+    command: ash -c 'while true; do :; done & kill -STOP $$! && wait $$!'
+    networks:
+      - default
